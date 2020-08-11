@@ -19,11 +19,11 @@ export default async (req, res) => {
 	const articleItems = await webflow.items({
 		collectionId: ids.collections.articles
 	})
-	articleItems.forEach(item => console.log(item['_id'], item['name']))
+	articleItems.items.forEach(x => console.log(x['_id'], x['name']))
 
 	// Cycle through collection to get each item ID
 	const tagItems = await webflow.items({ collectionId: ids.collections.tags })
-	tagItems.forEach(item => console.log(item['_id'], item['name']))
+	tagItems.items.forEach(x => console.log(x['_id'], x['name']))
 
 	res.json({ done: true })
 }
