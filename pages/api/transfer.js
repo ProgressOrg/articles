@@ -16,14 +16,12 @@ export default (req, res) => {
 	}
 
 	// Cycle through collection to get each field ID
-	const items = webflow.items({ collectionId: ids.collections.articles })
-	items.then(i => console.log(i.items[0]))
+	const articleItems = await webflow.items({ collectionId: ids.collections.articles })
+	console.log(articleItems)
 
 	// Cycle through collection to get each item ID
-	const items = webflow.items({ collectionId: ids.collections.tags })
-	items.then(i => {
-		i.items.forEach(item => console.log(item['_id'], item['name']))
-	})
+  const tagItems = await webflow.items({ collectionId: ids.collections.tags })
+  tagItems.forEach(item => console.log(item['_id'], item['name']))
 
 	res.json({ done: true })
 }
