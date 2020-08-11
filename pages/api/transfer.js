@@ -1,6 +1,8 @@
 import Webflow from 'webflow-api'
 
 export default (req, res) => {
+	console.log(process.env.WEBFLOW_API)
+
 	const webflow = new Webflow({ token: process.env.WEBFLOW_API })
 
 	const ids = {
