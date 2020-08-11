@@ -1,6 +1,6 @@
 import Webflow from 'webflow-api'
 
-export default (req, res) => {
+export default async (req, res) => {
 	console.log(process.env.WEBFLOW_API)
 
 	const webflow = new Webflow({ token: process.env.WEBFLOW_API })
@@ -16,12 +16,14 @@ export default (req, res) => {
 	}
 
 	// Cycle through collection to get each field ID
-	const articleItems = await webflow.items({ collectionId: ids.collections.articles })
+	const articleItems = await webflow.items({
+		collectionId: ids.collections.articles
+	})
 	console.log(articleItems)
 
 	// Cycle through collection to get each item ID
-  const tagItems = await webflow.items({ collectionId: ids.collections.tags })
-  tagItems.forEach(item => console.log(item['_id'], item['name']))
+	const tagItems = await webflow.items({ collectionId: ids.collections.tags })
+	tagItems.forEach(item => console.log(item['_id'], item['name']))
 
 	res.json({ done: true })
 }
