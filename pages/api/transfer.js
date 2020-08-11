@@ -22,4 +22,6 @@ export default (req, res) => {
 	items.then(i => {
 		i.items.forEach(item => console.log(item['_id'], item['name']))
 	})
+
+	res.json({ done: true })
 }
